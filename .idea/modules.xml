@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring/spring.iml" filepath="$PROJECT_DIR$/spring/spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/standard/standard.iml" filepath="$PROJECT_DIR$/standard/standard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/task11/task11.iml" filepath="$PROJECT_DIR$/spring/task11/task11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/task12/task12.iml" filepath="$PROJECT_DIR$/spring/task12/task12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/task13/task13.iml" filepath="$PROJECT_DIR$/spring/task13/task13.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring/task14/task14.iml" filepath="$PROJECT_DIR$/spring/task14/task14.iml" />
+    </modules>
+  </component>
+</project>

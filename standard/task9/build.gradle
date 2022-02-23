@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'ru.mirea'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/ru/mirea/task9']
+        }
+    }
+}
+
+task toJar (type: Jar) {
+    from sourceSets.main.output
+}
+
+mainClassName = 'Main'
