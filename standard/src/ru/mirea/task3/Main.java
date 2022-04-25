@@ -14,19 +14,20 @@ public class Main {
         Set<Integer> hashset = new SemaphoreHashSet<>(5);
 
         Thread one = new Thread(() -> {
-            for (int i = 0; i < 100; ++i) {
-                hashset.add(i++);
+            for (int i = 0; i < 10; ++i) {
+                hashset.add(i);
 
                 try {
                     Thread.sleep(10);
+                    System.out.println("Add -> " + hashset.toString());
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
             }
         });
         Thread two = new Thread(() -> {
-            for (int i = 0; i < 95; ++i) {
-                hashset.remove(i++);
+            for (int i = 0; i < 5; ++i) {
+                hashset.remove(i);
 
                 try {
                     Thread.sleep(10);

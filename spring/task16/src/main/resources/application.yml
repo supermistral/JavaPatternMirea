@@ -1,0 +1,13 @@
+spring:
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/java-task15
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver

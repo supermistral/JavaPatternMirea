@@ -22,6 +22,8 @@ public class FileHandler {
         if (commandArgs.size() > 1) {
             inputfileName = commandArgs.get(0);
             outputFileName = commandArgs.get(1);
+        } else if (commandArgs.size() == 1) {
+            outputFileName = commandArgs.get(0);
         }
     }
 

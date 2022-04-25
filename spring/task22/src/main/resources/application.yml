@@ -1,0 +1,36 @@
+spring:
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/java-task15
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASSWORD}
+    from: noreply@supershaun.com
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  error:
+    include-message: always
+
+logging:
+  path: spring/logs
+  database:
+    dump:
+      path: spring/dump

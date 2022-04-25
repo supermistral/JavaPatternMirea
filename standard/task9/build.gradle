@@ -22,8 +22,49 @@ sourceSets {
     }
 }
 
-task toJar (type: Jar) {
-    from sourceSets.main.output
+mainClassName = 'Main'
+
+def dockerDir = "$projectDir/docker"
+def dockerContainerName = "${project.name}"
+def dockerImageName = "supershaun/${project.name}:${project.version}"
+
+task copyJarToDockerDir(type: Copy) {
+    from "$buildDir/libs"
+    include "**/*-all.jar"
+    into dockerDir
 }
 
-mainClassName = 'Main'
+task removePreviousDockerContainer(type: Exec) {
+    workingDir dockerDir
+    commandLine "docker", "rm", dockerContainerName
+}
+
+task buildDockerImage(type: Exec) {
+    workingDir dockerDir
+    commandLine "docker", "build", "-t",
+            dockerImageName, "."
+}
+
+task runDockerContainer(type: Exec) {
+    workingDir dockerDir
+    commandLine "docker", "run", "--name", dockerContainerName,
+            "supershaun/${project.name}:${project.version}"
+}
+
+task buildJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+    archiveClassifier = "all"
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+}
+
+copyJarToDockerDir.dependsOn buildJar
+buildDockerImage.dependsOn removePreviousDockerContainer
+buildDockerImage.dependsOn copyJarToDockerDir
+runDockerContainer.dependsOn buildDockerImage

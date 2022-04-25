@@ -16,7 +16,7 @@ public class MarketController {
 
     @GetMapping
     public List<Market> getMarketList() {
-        return  marketService.getAll();
+        return marketService.getAll();
     }
 
     @GetMapping("{id}")
